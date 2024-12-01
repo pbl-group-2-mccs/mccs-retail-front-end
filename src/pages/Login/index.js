@@ -14,9 +14,13 @@ const Login = () =>{
 
             message.success('Login successfully')
         }else{
+            await dispatch(fetchLogin(values))
+
+            naviagte('/')
+
+            message.success('Login successfully')
             message.error('False username or password')
         }
-        // await dispatch(fetchLogin(values))
 
     }
     return(
