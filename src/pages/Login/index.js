@@ -8,17 +8,27 @@ const Login = () =>{
     const dispatch = useDispatch()
     const naviagte = useNavigate()
     const onFinish = async (values) =>{
-        await dispatch(fetchLogin(values))
+        console.log(values)
+        if(values.username === '123' && values.password === '123'){
+            naviagte('/')
 
-        naviagte('/')
+            message.success('Login successfully')
+        }else{
+            message.error('False username or password')
+        }
+        // await dispatch(fetchLogin(values))
 
-        message.success('Login successfully')
     }
     return(
         <div className='login'>
             <Card className='login-container'>
+            <div style={{ textAlign: 'center' }}>
+                Welcome! This is a demo version
+            </div>
+            <br />
                 <Form onFinish={onFinish} validateTrigger = 'onBlur'>
                     <Form.Item
+                        label="Username"
                         name="username"
                         rules={[
                             { 
@@ -26,9 +36,10 @@ const Login = () =>{
                                 message: 'Please input your username!' 
                             }
                         ]}>
-                        <Input size='large' placeholder='Please the username' />
+                        <Input />
                     </Form.Item>
                     <Form.Item
+                        label="Password"
                         name="password"
                         rules={[
                             { 
@@ -36,7 +47,7 @@ const Login = () =>{
                                 message: 'Please input your password!' 
                             }
                         ]}>
-                        <Input size='large' placeholder='Please enter the password' />
+                       <Input.Password />
                     </Form.Item>
                     <Form.Item>
                         <Button type='primary' htmlType='submit' size='large' block>

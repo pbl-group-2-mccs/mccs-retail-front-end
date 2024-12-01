@@ -1,5 +1,5 @@
 const Publish = () => {
-    return <div>this is Publish</div>
+    return <div>this is Inventory</div>
 }
 
 export default Publish
