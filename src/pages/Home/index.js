@@ -1,5 +1,6 @@
 import BarChart from "@/components/BarChart"
 import PieChart from "@/components/PieChart"
+import USAMap from "@/components/USAMap"
 
 const Home = () => {
     return <div>
@@ -14,6 +15,7 @@ const Home = () => {
                     { value: 484, name: 'Union Ads' },
                     { value: 300, name: 'Video Ads' }
                   ]}/>
+        <USAMap></USAMap>
     </div>
 }
 
