@@ -4,8 +4,8 @@ import Login from '@/pages/Login'
 import { createBrowserRouter } from 'react-router-dom'
 import { AuthRoute } from '@/components/AuthRoute'
 import Home from '@/pages/Home'
-import Article from '@/pages/Article'
-import Publish from '@/pages/Publish'
+import SalesOrder from '@/pages/SalesOrder'
+import Inventory from '@/pages/Inventory'
 
 const router = createBrowserRouter([
     {
@@ -21,12 +21,12 @@ const router = createBrowserRouter([
                 index:true
             },
             {
-                path: 'article',
-                element: <Article />
+                path: 'salesorder',
+                element: <SalesOrder />
             },
             {
-                path:'publish',
-                element: <Publish />
+                path:'inventory',
+                element: <Inventory />
             }
         ]
     },

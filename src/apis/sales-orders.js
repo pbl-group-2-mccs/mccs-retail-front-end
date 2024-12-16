@@ -7,3 +7,10 @@ export function getSalesOrdersListAPI(param){
         param
     })
 }
+
+export function deleteSalesOrderAPI(id){
+    return request({
+        url: '/api/sales-orders/${id}',
+        method:'DELETE'
+    })
+}

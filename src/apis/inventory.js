@@ -7,3 +7,10 @@ export function getInventoryListAPI(param){
         param
     })
 }
+
+export function deleteInventoryAPI(id){
+    return request({
+        url: '/api/inventory/${id}',
+        method:'DELETE'
+    })
+}
