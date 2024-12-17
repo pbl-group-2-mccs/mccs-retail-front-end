@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 //1.把功能代码都放到这个组件中
 //2.把可变的部分抽象成prop参数
 
-const USAMap = (data) => {
+const USAMap = ({data}) => {
     const chartRef = useRef(null)
 
     const usaJson = 

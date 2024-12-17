@@ -7,7 +7,9 @@ import { deleteSalesOrderAPI, getSalesOrdersListAPI } from '@/apis/sales-orders'
 const { Option } = Select
 
 const status = {
-  Cancelled: <Tag color='error'>Cancelled</Tag>
+    COMPLETED: <Tag color='success'>COMPLETED</Tag>,
+    CANCELLED: <Tag color='error'>CANCELLED</Tag>,
+    PENDING: <Tag color='warning'>PENDING</Tag>
 }
 
 const SalesOrder = () => {
@@ -174,8 +176,9 @@ const SalesOrder = () => {
             <Form initialValues={{status: null}} onFinish={onFinish}>
               <Form.Item label='Status' name='status'>
                 <Radio.Group>
-                  <Radio value={null}>All display</Radio>
-                  <Radio value={0}>Cancelled</Radio>
+                    <Radio value={0}>COMPLETED</Radio>
+                    <Radio value={1}>CANCELLED</Radio>
+                    <Radio value={2}>PENDING</Radio>
                 </Radio.Group>
               </Form.Item>
               <Form.Item label='Customer Name' name='name'>
