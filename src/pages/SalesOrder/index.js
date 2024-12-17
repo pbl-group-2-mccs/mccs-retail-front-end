@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import { useEffect, useState } from 'react'
 import { deleteSalesOrderAPI, getSalesOrdersListAPI } from '@/apis/sales-orders'
+import { format } from 'date-fns';
 
 const { Option } = Select
 
@@ -19,6 +20,10 @@ const SalesOrder = () => {
             title: 'Order Id',
             dataIndex: 'orderId',
           },
+        {
+            title: 'Product Name',
+            dataIndex: 'productName',
+        },
           {
             title: 'Customer Id',
             dataIndex: 'customerId',
@@ -42,6 +47,10 @@ const SalesOrder = () => {
           {
             title: 'Order Date',
             dataIndex: 'orderDate',
+              render: (text) => {
+                  const date = new Date(...text);
+                  return format(date, 'yyyy-MM-dd');
+              }, // Format the date
           },
           {
             title: 'Quantity',
