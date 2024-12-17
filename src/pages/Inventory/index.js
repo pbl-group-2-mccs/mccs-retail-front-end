@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import { useEffect, useState } from 'react'
 import { deleteInventoryAPI, getInventoryListAPI } from '@/apis/inventory'
+import { format } from 'date-fns';
 
 const { Option } = Select
 
@@ -28,11 +29,15 @@ const Inventory = () => {
           },
           {
             title: 'Price',
-            dataIndex: 'price',
+            dataIndex: 'unitPrice',
           },
           {
             title: 'Created Date',
             dataIndex: 'createdAt',
+              render: (text) => {
+                const date = new Date(...text);
+                return format(date, 'yyyy-MM-dd');
+              }, // Format the date
           },
           {
             title: 'Operation',
