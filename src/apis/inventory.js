@@ -1,10 +1,9 @@
 import { request } from "@/utils";
 
-export function getInventoryListAPI(param){
+export function getInventoryListAPI(){
     return request({
         url: '/api/inventory',
         method: 'GET',
-        param
     })
 }
 

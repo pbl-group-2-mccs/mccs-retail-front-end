@@ -42,8 +42,12 @@ const SalesOrder = () => {
             dataIndex: 'orderDate',
           },
           {
-            title: 'Total Amount',
-            dataIndex: 'totalAmount',
+            title: 'Quantity',
+            dataIndex: 'quantity',
+          },
+          {
+            title: 'Unit Price',
+            dataIndex: 'unitPrice',
           },
           {
             title: 'Status',
@@ -76,35 +80,28 @@ const SalesOrder = () => {
           }
     ]
 
-    const data = [
-        {
-            orderId: '1',
-            customer: {
-                customerId:44,
-                name:"Timothy Berger",
-                email:"nicholaswall@example.com",
-                phone:"240232312",
-                addressLine1:"9281",
-                addressLine2:null,
-                city:"Washington",
-                state:"Virginia",
-                zipCode:"22042",
-                country:"USA",
-            },
-            orderDate:"2024-11-26",
-            totalAmount:488.39,
-            status:"Cancelled"
-          },
-    ]
+    // const data = [
+    //     {
+    //         orderId: '1',
+    //         customer: {
+    //             customerId:44,
+    //             name:"Timothy Berger",
+    //             email:"nicholaswall@example.com",
+    //             phone:"240232312",
+    //             addressLine1:"9281",
+    //             addressLine2:null,
+    //             city:"Washington",
+    //             state:"Virginia",
+    //             zipCode:"22042",
+    //             country:"USA",
+    //         },
+    //         orderDate:"2024-11-26",
+    //         totalAmount:488.39,
+    //         status:"Cancelled"
+    //       },
+    // ]
 
-    const flatData = data.map((item) => ({
-        ...item,
-        customerId: item.customer?.customerId,
-        name: item.customer?.name,
-        email: item.customer?.email,
-        phone: item.customer?.phone,
-        addressLine1: item.customer?.addressLine1
-      }));
+
       
       const [reqData, setReqData] = useState({
         status:'',
@@ -116,24 +113,34 @@ const SalesOrder = () => {
 
 
     const [count, setCount] = useState([])
-    // const [list, setList] = useState([])
-    // useEffect(() => {
-    //     async function getList() {
-    //         const res = await getSalesOrdersListAPI(reqData)
-    //         setList(res.data.results)
-    //     }
-    //     getList()
-    // }, [reqData])
+    const [list, setList] = useState([])
+
+    const flatData = list.map((item) => ({
+        ...item,
+        customerId: item.customer?.customerId,
+        name: item.customer?.name,
+        email: item.customer?.email,
+        phone: item.customer?.phone,
+        addressLine1: item.customer?.addressLine1
+    }));
+
+    useEffect(() => {
+        async function getList() {
+            const res = await getSalesOrdersListAPI()
+            setList(res)
+        }
+        getList()
+    }, [])
 
     const onFinish = (formValue) => {
       console.log(formValue)
       console.log(formValue.date.format('YYYY-MM-DD'))
-      // setReqData({
-      //   ...reqData,
-      //   status: formValue.status,
-      //   name: formValue.name,
-      //   date: formValue.date.format('YYYY-MM-DD')
-      // })
+      setReqData({
+        ...reqData,
+        status: formValue.status,
+        name: formValue.name,
+        date: formValue.date.format('YYYY-MM-DD')
+      })
     }
 
     const onPageChange = (page) => {
@@ -146,11 +153,11 @@ const SalesOrder = () => {
 
     const onConfirm = (data) =>{
       console.log(data)
-      // deleteSalesOrderAPI(data.orderId)
-      // setReqData({
-      //   ...reqData,
-      //   page:1
-      // })
+      deleteSalesOrderAPI(data.orderId)
+      setReqData({
+        ...reqData,
+        page:1
+      })
     }
 
     return (

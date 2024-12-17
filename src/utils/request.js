@@ -7,7 +7,7 @@ import { getToken } from "./token";
 
 const request = axios.create({
     //backend domain
-    baseURL: '',
+    baseURL: 'http://localhost:8000',
     timeout: 5000
 })
 

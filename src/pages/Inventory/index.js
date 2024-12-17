@@ -60,21 +60,19 @@ const Inventory = () => {
           }
     ]
 
-    const data = [
-        {
-            productId: "1",
-            productName: "Aircraft Carrier",
-            productLine: "Da Li An",
-            quantity:"2",
-            price:2000,
-            createdAt:"2013-11-19"
-          },
-    ]
+    // const data = [
+    //     {
+    //         productId: "1",
+    //         productName: "Aircraft Carrier",
+    //         productLine: "Da Li An",
+    //         quantity:"2",
+    //         price:2000,
+    //         createdAt:"2013-11-19"
+    //       },
+    // ]
 
-    const flatData = data.map((item) => ({
-        ...item,
-      }));
-      
+
+
       const [reqData, setReqData] = useState({
         productName:'',
         productLine:'',
@@ -85,24 +83,29 @@ const Inventory = () => {
 
 
     const [count, setCount] = useState([])
-    // const [list, setList] = useState([])
-    // useEffect(() => {
-    //     async function getList() {
-    //         const res = await getInventoryListAPI(reqData)
-    //         setList(res.data.results)
-    //     }
-    //     getList()
-    // }, [reqData])
+    const [list, setList] = useState([])
+
+    const flatData = list.map((item) => ({
+        ...item,
+    }));
+
+    useEffect(() => {
+        async function getList() {
+            const res = await getInventoryListAPI()
+            setList(res)
+        }
+        getList()
+    }, [])
 
     const onFinish = (formValue) => {
       console.log(formValue)
       console.log(formValue.createdAt.format('YYYY-MM-DD'))
-      // setReqData({
-      //   ...reqData,
-      //   productName: formValue.productName,
-      //   productLine: formValue.productLine,
-      //   createdAt: formValue.createdAt.format('YYYY-MM-DD')
-      // })
+      setReqData({
+        ...reqData,
+        productName: formValue.productName,
+        productLine: formValue.productLine,
+        createdAt: formValue.createdAt.format('YYYY-MM-DD')
+      })
     }
 
     const onPageChange = (page) => {
@@ -115,11 +118,11 @@ const Inventory = () => {
 
     const onConfirm = (data) =>{
       console.log(data)
-      // deleteInventoryAPI(data.productId)
-      // setReqData({
-      //   ...reqData,
-      //   page:1
-      // })
+      deleteInventoryAPI(data.productId)
+      setReqData({
+        ...reqData,
+        page:1
+      })
     }
 
     return (
