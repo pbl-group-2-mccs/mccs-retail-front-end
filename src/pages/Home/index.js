@@ -85,7 +85,7 @@ const Home = () => {
             <Col span={12}>
                 <Card style={{ marginBottom: '20px' }}>
                     <BarChart
-                        title={'Sales by Date (Month)'}
+                        title={'Sales data by Month (2024)'}
                         seriesData={[587, 765, 801, 605, 740, 912, 1057, 1288, 1105, 906, 851, 802]}
                         xdata={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
                     />

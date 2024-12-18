@@ -15,7 +15,7 @@ const PieChart = ({title, data}) =>{
         const option = {
             title: {
                 text: title,
-                subtext: 'Fake Data',
+                subtext: 'Group by product type',
                 left: 'center'
               },
               tooltip: {

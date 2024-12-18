@@ -45,7 +45,7 @@ const USAMap = () => {
         const option = {
             title: {
                 text: 'USA Map',
-                subtext: 'Data from Backend',
+                subtext: 'Sales map',
                 left: 'center',
             },
             tooltip : {
